@@ -14,7 +14,7 @@ const OUTPUT_PATH = 'dist';
 
 const config = {
   // Main entry point for application:
-  entry: './src/app.js',
+  entry: ['babel-polyfill','./src/app.js'],
 
   output: {
     path: path.resolve(__dirname, OUTPUT_PATH),
