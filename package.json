@@ -10,7 +10,6 @@
     "api": "json-server --watch api/db.json --port 9001",
     "start": "concurrently --kill-others \"npm run api\" \"npm run serve\""
   },
- 
   "author": "",
   "license": "UNLICENSED",
   "private": true,
@@ -47,6 +46,7 @@
     "webpack-dev-server": "^2.9.5"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "bootstrap": "^4.0.0-alpha.6",
     "prop-types": "^15.6.0",
