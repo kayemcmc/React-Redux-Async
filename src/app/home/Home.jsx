@@ -6,6 +6,14 @@ import React from 'react';
 // Render static HTML:
 import __html from './home.html';
 
-const Home = () => <div dangerouslySetInnerHTML={{ __html }} />;
+//Import components
+import PostList from '../postList';
+
+const Home = () => (
+    <div>
+         <div dangerouslySetInnerHTML={{ __html }} />
+        <PostList />
+    </div>
+)
 
 export default Home;

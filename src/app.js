@@ -17,6 +17,7 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 // Our app
 import App from './app/App';
@@ -28,7 +29,7 @@ import PostDetail from './app/postDetail';
 //Reducer
 import rootReducer from './reducers';
 
-const middleware = [logger];
+const middleware = [logger, thunk];
 const store = createStore(
   rootReducer,
   {},
@@ -40,8 +41,8 @@ render((
     <Router>
       <Switch>
         <Route exact path='/' component={App} />
-        <Route path='about' component={About}/>
-        <Route path='home' component={Home}/>
+        <Route path='/about' component={About}/>
+        <Route path='/home' component={Home}/>
         <Route path="/:id" component={PostDetail} />
       </Switch>
     </Router>
