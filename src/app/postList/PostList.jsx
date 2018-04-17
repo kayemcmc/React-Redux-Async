@@ -6,6 +6,8 @@ import React, { Component } from 'react';
 // Render static HTML:
 import __html from './PostList.html';
 
+//import Styled Components
+import styled from 'styled-components';
 //Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -18,11 +20,14 @@ import Post from '../Post';
 
 class PostList extends Component {
   componentDidMount() {
-    const { getPosts  } = this.props;
-      getPosts();
+    const { getPosts, isLoaded  } = this.props;
+      if(!isLoaded) {
+        getPosts();
+      }
   }
   render() {
-    const { posts } = this.props;
+    const { posts, isLoaded } = this.props;
+    if(!isLoaded) return <LoadedText>Loading...</LoadedText>
     console.log(posts);
     return (
       <div>
@@ -34,9 +39,16 @@ class PostList extends Component {
 
 const mapStateToProps = state => ({
   posts : state.postReducer.posts,
+  isLoaded: state.postReducer.postsLoaded,
 })
 
 const mapDispatchToProps  = dispatch => bindActionCreators({
   getPosts,
 }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+
+const LoadedText = styled.h3`
+  color: #48a9c5;
+  text-align: center;
+  font-size: 20px;
+`

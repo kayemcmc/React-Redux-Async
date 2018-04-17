@@ -1,6 +1,9 @@
-import { GET_POSTS } from '../actions/posts';
+import { GET_POSTS, GET_POST } from '../actions/posts';
 const initialState = {
-    posts : []
+    posts : [],
+    post: {},
+    postLoaded: false,
+    postsLoaded: false,
 }
 
 export default function (state = initialState, action) {
@@ -10,6 +13,13 @@ export default function (state = initialState, action) {
         return {
             ...state,
             posts: data,
+            postsLoaded: true,
+        } 
+    case GET_POST:
+        return {
+            ...state,
+            post: data,
+            postLoaded: true,
         } 
     default:
         return state; 

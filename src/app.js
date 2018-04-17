@@ -40,7 +40,7 @@ render((
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route exact path='/' component={App} />
+        <Route exact path='/' component={Home} />
         <Route path='/about' component={About}/>
         <Route path='/home' component={Home}/>
         <Route path="/:id" component={PostDetail} />
