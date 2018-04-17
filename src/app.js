@@ -18,6 +18,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+import { save, load } from 'redux-localstorage-simple';
 
 // Our app
 import App from './app/App';
@@ -32,8 +33,8 @@ import rootReducer from './reducers';
 const middleware = [logger, thunk];
 const store = createStore(
   rootReducer,
-  {},
-  composeWithDevTools(applyMiddleware(...middleware)),
+  load(),
+  composeWithDevTools(applyMiddleware(...middleware, save())),
 );
 
 render((

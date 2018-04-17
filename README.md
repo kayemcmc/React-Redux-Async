@@ -1,8 +1,8 @@
 
-Losely based on a coding challenge using a Fake REST Api. 
-React Blog with list filtering, date search, single listings
+
+React Blog with list filtering, date search, single listings,  using a Fake JSON REST Api. 
 ** Upgraded to React 16 ** 
-   React-Router-Dom ** Redux ** React-Redux ** Async Await API calls ** Styled-Components ** Bootstrap 4
+   React-Router-Dom ** Redux ** React-Redux ** Async Await API calls ** Redux-Localstorage ** Styled-Components ** Bootstrap 4
 
 
 ## Using the REST API

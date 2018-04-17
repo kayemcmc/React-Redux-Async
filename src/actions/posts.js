@@ -1,5 +1,6 @@
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POST = 'GET_POST';
+export const RESET_POST = 'RESET_POST';
 
 export function getPosts() {
     return async function (dispatch) {
@@ -21,4 +22,10 @@ export function getPost(id) {
             data: post,
         });
     };
+}
+
+export function resetPost() {
+    return {
+        type: 'RESET_POST',
+    }
 }

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 //actions
-import { getPost } from '../../actions/posts';
+import { getPost, resetPost } from '../../actions/posts';
 
 //styled components
 import styled from 'styled-components';
@@ -18,6 +18,10 @@ import styled from 'styled-components';
   componentDidMount() {
     const { getPost, match } = this.props;
         getPost(match.params.id);
+  }
+
+  componentWillUnmount() {
+    this.props.resetPost();
   }
    render() {
      const { post } = this.props;
@@ -43,6 +47,7 @@ import styled from 'styled-components';
 
 const mapDispatchToProps  = dispatch => bindActionCreators({
   getPost,
+  resetPost,
 }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail);
 

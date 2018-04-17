@@ -20,8 +20,9 @@ import Post from '../Post';
 
 class PostList extends Component {
   componentDidMount() {
-    const { getPosts, isLoaded  } = this.props;
-      if(!isLoaded) {
+    const { getPosts, isLoaded, moviesLoadedAt  } = this.props;
+    const oneHour = 60 * 60 * 1000;
+      if(!isLoaded || ((new Date()) -   moviesLoadedAt) > oneHour) {
         getPosts();
       }
   }
