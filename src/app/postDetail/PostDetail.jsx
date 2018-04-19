@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 
 //actions
 import { getPost, resetPost } from '../../actions/posts';
-import { getComments } from '../../actions/comments';
+
 
 //styled components
 import styled from 'styled-components';
@@ -20,9 +20,8 @@ import Comments from '../comments';
 
  class PostDetail extends Component {
   componentDidMount() {
-    const { getPost, getComments, match } = this.props;
+    const { getPost, match } = this.props;
         getPost(match.params.id);
-        getComments(match.params.parent_id);
   }
 
   componentWillUnmount() {
@@ -40,7 +39,7 @@ import Comments from '../comments';
           <p>{post.content}</p>
         </div>
      </PostInfo>
-     <Comments comments={comments}/>
+     <Comments comments={comments} postId={ post.id } postPath={ this.props.match.params }  />
     </PostWrapper>
      )
    }
@@ -49,13 +48,11 @@ import Comments from '../comments';
  const mapStateToProps = state => ({
   post : state.postReducer.post,
   isLoaded: state.postReducer.postLoaded,
-  comments: state.commentsReducer.comments,
 })
 
 const mapDispatchToProps  = dispatch => bindActionCreators({
   getPost,
   resetPost,
-  getComments,
 }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail);
 

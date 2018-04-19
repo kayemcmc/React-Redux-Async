@@ -1,4 +1,4 @@
-import { GET_COMMENTS } from '../actions/comments';
+import { GET_COMMENTS, ADD_COMMENT } from '../actions/comments';
 const initialState = {
     comments : [],
 }
@@ -6,6 +6,11 @@ const initialState = {
 export default function (state = initialState, action) {
    const { type, data } = action;
    switch(type) {
+    case ADD_COMMENT:
+        return [
+            ...state,
+            action.comment
+        ]
     case GET_COMMENTS:
         return {
             ...state,
