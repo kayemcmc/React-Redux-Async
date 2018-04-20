@@ -8,10 +8,12 @@ import __html from './home.html';
 
 //Import components
 import PostList from '../postList';
+import PostListFilters from '../postListFilters';
 
 const Home = () => (
     <div>
          <div dangerouslySetInnerHTML={{ __html }} />
+        <PostListFilters />
         <PostList />
     </div>
 )

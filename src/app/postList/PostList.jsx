@@ -15,6 +15,9 @@ import { bindActionCreators } from 'redux';
 //actions
 import { getPosts } from '../../actions/posts';
 
+//selectors
+import selectPosts from '../../selectors/posts';
+
 //import component
 import Post from '../Post';
 
@@ -39,7 +42,7 @@ class PostList extends Component {
 }
 
 const mapStateToProps = state => ({
-  posts : state.postReducer.posts,
+  posts : selectPosts(state.postReducer.posts, state.filtersReducer),
   isLoaded: state.postReducer.postsLoaded,
 })
 
