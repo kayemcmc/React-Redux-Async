@@ -20,6 +20,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { save, load } from 'redux-localstorage-simple';
 
+
 // Our app
 import App from './app/App';
 import About from './app/about';

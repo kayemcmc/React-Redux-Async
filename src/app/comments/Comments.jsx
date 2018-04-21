@@ -4,6 +4,7 @@ import './Comments.css';
 
 //components
 import Comment from '../comment';
+import AddComment from '../addComment';
 
 //Redux
 import { connect } from 'react-redux';
@@ -16,27 +17,17 @@ import { getComments } from '../../actions/comments';
 import styled from 'styled-components';
 
 class Comments extends Component {
-  constructor() {
-    super()
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
+ 
   componentWillMount() {
 		this.props.getComment(this.props.postPath.id)
 	}
-  handleSubmit(e) {
-    e.preventDefault();
-    const comment = e.target.elements.comment.value;
-    this.props.addComment(comment)
-  }
+ 
   render() {
   return (
     <div className="col-md-10 mx-auto">
   
       <div>
-        <form className="comment-form" onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Comment" name="comment"/>
-          <input type="submit" hidden />
-        </form>
+       <AddComment />
       </div>
       {
         this.props.comments.map(comment => {
