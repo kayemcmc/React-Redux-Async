@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 
+//import Styled Components
+import styled from 'styled-components';
+
+
 export default class AddComment extends Component {
     state = {
         comment: '',
