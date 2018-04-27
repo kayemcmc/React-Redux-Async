@@ -1,13 +1,8 @@
+import axios from 'axios';
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const ADD_COMMENT = 'ADD_COMMENT';
 
-export function addComment(comment, postId) {
-    return {
-        type: 'ADD_COMMENT',
-        comment,
-        postId
-    }
-}
+
 export function getComments(id) {
     return async function (dispatch) {
         const res = await fetch(`http://localhost:9001/posts/${id}/comments`);
@@ -19,3 +14,24 @@ export function getComments(id) {
         });
     };
 }
+
+// Add Comment
+export const addComment = (postId, commentData) => dispatch => {
+    axios
+      .post(`http://localhost:9001/posts/${postId}/comments`, commentData)
+      .then(res =>
+        dispatch({
+          type: ADD_COMMENT,
+          payload: res.data
+        })
+      )
+      .catch(err =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+        })
+      );
+  };
+
+  
+

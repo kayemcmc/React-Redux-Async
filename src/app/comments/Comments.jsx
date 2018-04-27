@@ -27,7 +27,7 @@ class Comments extends Component {
     <div className="col-md-10 mx-auto">
   
       <div>
-       <AddComment />
+       <AddComment postId={this.props.postId}/>
       </div>
       {
         this.props.comments.map(comment => {
